@@ -81,7 +81,7 @@ export default function HeroSection() {
         <svg viewBox="0 0 800 200" className="w-full h-full">
           <path
             d="M0,100 Q200,20 400,80 T800,60"
-            stroke="var(--color-accent)"
+            stroke="var(--color-golden)"
             strokeWidth="80"
             fill="none"
             opacity="0.5"
@@ -97,7 +97,7 @@ export default function HeroSection() {
           <div className="hidden lg:block col-span-2">
             <div
               ref={imgLeftRef}
-              className="aspect-[3/4] overflow-hidden"
+              className="hero-img aspect-[3/4] overflow-hidden"
               style={{ clipPath: "inset(100% 0 0 0)" }}
             >
               <img
@@ -120,7 +120,7 @@ export default function HeroSection() {
                 </span>
               </span>
               <span className="block overflow-hidden mt-1">
-                <span className="hero-line-inner block text-[clamp(2.8rem,6.5vw,7rem)] font-serif font-light italic leading-[1] tracking-[-0.01em]">
+                <span className="hero-line-inner block text-[clamp(2.8rem,6.5vw,7rem)] font-serif font-light italic leading-[1] tracking-[-0.01em]" style={{ color: "#b8a0c4" }}>
                   &amp; Visual Strategy
                 </span>
               </span>
@@ -140,7 +140,7 @@ export default function HeroSection() {
           <div className="hidden lg:block col-span-2">
             <div
               ref={imgRightRef}
-              className="aspect-[3/4] overflow-hidden mt-12"
+              className="hero-img aspect-[3/4] overflow-hidden mt-12"
               style={{ clipPath: "inset(100% 0 0 0)" }}
             >
               <img

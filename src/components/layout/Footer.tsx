@@ -13,7 +13,7 @@ export default function Footer() {
             {/* Brand */}
             <div>
               <span className="text-2xl font-light tracking-tight">
-                <span className="font-semibold">studio</span>arch.
+                <span className="font-semibold" style={{ color: "#d4cc9a" }}>studio</span><span style={{ color: "#a8a099" }}>arch.</span>
               </span>
               <p className="mt-4 text-sm text-text-light/50 max-w-xs leading-relaxed">
                 We craft visual narratives for architecture with clarity,

@@ -34,7 +34,7 @@ export default function ShowreelSection() {
   return (
     <section ref={sectionRef} className="py-16 md:py-24 px-8 md:px-12 lg:px-16">
       <div className="max-w-[1400px] mx-auto">
-        <div className="relative overflow-hidden cursor-pointer group aspect-[16/9]">
+        <div className="showreel-img relative overflow-hidden cursor-pointer group aspect-[16/9]">
           <div ref={imageRef} className="absolute inset-0">
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&h=900&fit=crop"

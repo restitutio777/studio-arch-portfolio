@@ -97,8 +97,10 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
               <Link
                 href={link.href}
                 onClick={onClose}
-                className="menu-link block text-[clamp(3rem,8vw,7rem)] font-serif font-light leading-[1.1] tracking-tight text-text hover:text-text-muted transition-colors duration-300"
-                style={{ opacity: 0, transform: "translateY(40px)" }}
+                className="menu-link block text-[clamp(3rem,8vw,7rem)] font-serif font-light leading-[1.1] tracking-tight transition-colors duration-300"
+                style={{ color: "#8a7e76", opacity: 0, transform: "translateY(40px)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#b8a0c4")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#8a7e76")}
               >
                 {link.label}
               </Link>

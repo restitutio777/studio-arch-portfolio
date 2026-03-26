@@ -44,7 +44,7 @@ export default function AboutPage() {
           <div className="overflow-hidden">
             <h1 className="about-line text-[clamp(2rem,5vw,4.5rem)] font-bold uppercase leading-[1.1] tracking-tight">
               I CRAFT{" "}
-              <span className="font-serif font-light italic">
+              <span className="font-serif font-light italic" style={{ color: "#b8a0c4" }}>
                 VISUAL NARRATIVES
               </span>
             </h1>
@@ -118,12 +118,14 @@ export default function AboutPage() {
               Philosophy
             </span>
           </RevealOnScroll>
+          <div style={{ color: "#d4cc9a" }}>
           <SplitText
             tag="h2"
-            className="text-text-light text-[clamp(1.5rem,3vw,2.5rem)] font-light leading-relaxed font-serif italic"
+            className="text-[clamp(1.5rem,3vw,2.5rem)] font-light leading-relaxed font-serif italic"
           >
             Architecture is more than structure. It is an experience, a feeling, a story waiting to be told through the right lens.
           </SplitText>
+          </div>
         </div>
       </section>
 
