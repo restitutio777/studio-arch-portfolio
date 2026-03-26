@@ -27,7 +27,7 @@ export default function Navigation() {
       >
         {/* Logo */}
         <Link href="/" className="relative z-[60]">
-          <span className="text-xl font-light tracking-tight">
+          <span className="text-2xl md:text-3xl font-light tracking-tight">
             <span className="font-semibold">studio</span>arch.
           </span>
         </Link>
