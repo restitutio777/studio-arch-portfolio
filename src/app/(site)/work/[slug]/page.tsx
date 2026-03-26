@@ -97,8 +97,8 @@ export default function ProjectDetailPage({
       </div>
 
       {/* Metadata */}
-      <div className="px-6 md:px-12 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto">
+      <div className="px-8 md:px-12 lg:px-16 py-16 md:py-24">
+        <div className="max-w-[1400px] mx-auto">
           <RevealOnScroll>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-border pb-12 mb-12">
               {[

@@ -2,42 +2,39 @@
 
 import Link from "next/link";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
-import SplitText from "@/components/ui/SplitText";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function AboutTeaser() {
   return (
-    <section className="py-24 md:py-40 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="py-32 md:py-44 px-8 md:px-12 lg:px-16">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
         {/* Image */}
-        <RevealOnScroll className="relative">
-          <div className="relative h-[400px] md:h-[550px] overflow-hidden">
+        <RevealOnScroll className="md:col-span-5">
+          <div className="aspect-[4/5] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1600566753086-00f18f6b0049?w=800&h=1100&fit=crop"
-              alt="Studio"
+              src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=1000&fit=crop"
+              alt="Architecture detail"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/20" />
         </RevealOnScroll>
 
         {/* Text */}
-        <div>
+        <div className="md:col-span-6 md:col-start-7">
           <RevealOnScroll>
-            <span className="text-xs uppercase tracking-[0.3em] text-text-muted block mb-6">
+            <span className="text-[11px] uppercase tracking-[0.3em] text-text-muted block mb-8">
               About the Studio
             </span>
           </RevealOnScroll>
 
-          <SplitText
-            tag="h2"
-            className="text-[clamp(1.8rem,3.5vw,3rem)] font-bold uppercase leading-tight mb-8"
-          >
-            We believe architecture deserves to be seen through intentional vision.
-          </SplitText>
+          <RevealOnScroll delay={0.1}>
+            <h2 className="text-[clamp(1.6rem,3vw,2.6rem)] font-bold uppercase leading-[1.15] tracking-[-0.01em] mb-8">
+              We believe architecture deserves to be seen through intentional vision.
+            </h2>
+          </RevealOnScroll>
 
           <RevealOnScroll delay={0.2}>
-            <p className="text-text-muted leading-relaxed mb-8 max-w-md">
+            <p className="text-text-muted text-[15px] leading-[1.8] mb-10 max-w-md">
               With over a decade of international experience, we&apos;ve collaborated
               on world-class residential and conceptual projects, helping
               architecture studios express their vision with clarity and depth.
@@ -48,10 +45,10 @@ export default function AboutTeaser() {
             <MagneticButton>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-3 text-sm font-medium uppercase tracking-wider group"
+                className="inline-flex items-center gap-4 text-[13px] font-medium uppercase tracking-[0.15em] group"
               >
                 Learn More
-                <span className="w-8 h-[1px] bg-text group-hover:w-12 transition-all" />
+                <span className="w-10 h-[1px] bg-text group-hover:w-16 transition-all duration-300" />
               </Link>
             </MagneticButton>
           </RevealOnScroll>

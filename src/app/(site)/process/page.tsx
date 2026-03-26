@@ -42,7 +42,7 @@ export default function ProcessPage() {
   return (
     <div className="pt-32 md:pt-40 pb-24 md:pb-40">
       {/* Hero */}
-      <section className="px-6 md:px-12 mb-24 md:mb-40">
+      <section className="px-8 md:px-12 lg:px-16 mb-24 md:mb-40">
         <div className="max-w-5xl">
           <SplitText
             tag="h1"
@@ -61,8 +61,8 @@ export default function ProcessPage() {
       </section>
 
       {/* Steps */}
-      <section className="px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="px-8 md:px-12 lg:px-16">
+        <div className="max-w-[1400px] mx-auto">
           {steps.map((step, i) => (
             <RevealOnScroll key={step.number}>
               <div

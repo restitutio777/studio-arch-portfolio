@@ -2,9 +2,8 @@
 
 import { useRef, useEffect } from "react";
 import Link from "next/link";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
-import SplitText from "@/components/ui/SplitText";
 
 const projects = [
   {
@@ -50,21 +49,20 @@ export default function FeaturedProjects() {
     const cards = gridRef.current.querySelectorAll(".project-card");
 
     const ctx = gsap.context(() => {
-      cards.forEach((card, i) => {
+      cards.forEach((card) => {
         gsap.fromTo(
           card,
-          { y: 80, opacity: 0 },
+          { y: 60, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.9,
             ease: "power3.out",
             scrollTrigger: {
               trigger: card,
-              start: "top 85%",
+              start: "top 88%",
               toggleActions: "play none none none",
             },
-            delay: i * 0.1,
           }
         );
       });
@@ -74,24 +72,22 @@ export default function FeaturedProjects() {
   }, []);
 
   return (
-    <section className="py-24 md:py-40 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-32 md:py-44 px-8 md:px-12 lg:px-16">
+      <div className="max-w-[1400px] mx-auto">
+        {/* Header */}
         <RevealOnScroll>
-          <div className="flex items-end justify-between mb-16">
+          <div className="flex items-end justify-between mb-16 md:mb-20">
             <div>
-              <span className="text-xs uppercase tracking-[0.3em] text-text-muted block mb-4">
+              <span className="text-[11px] uppercase tracking-[0.3em] text-text-muted block mb-5">
                 Selected Projects
               </span>
-              <SplitText
-                tag="h2"
-                className="text-[clamp(2rem,4vw,3.5rem)] font-bold uppercase leading-tight"
-              >
+              <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-bold uppercase leading-[1.1] tracking-[-0.02em]">
                 Featured Work
-              </SplitText>
+              </h2>
             </div>
             <Link
               href="/work"
-              className="hidden md:flex items-center gap-2 text-sm text-text-muted hover:text-text transition-colors group"
+              className="hidden md:flex items-center gap-3 text-[13px] text-text-muted hover:text-text transition-colors group"
             >
               View all projects
               <svg
@@ -113,39 +109,34 @@ export default function FeaturedProjects() {
           </div>
         </RevealOnScroll>
 
-        {/* Asymmetric grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {/* Grid — 2-column with alternating heights */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14">
           {projects.map((project, i) => (
             <Link
               key={project.slug}
               href={`/work/${project.slug}`}
               className={`project-card group block ${
-                i % 3 === 0 ? "md:row-span-2" : ""
+                i % 2 === 1 ? "md:mt-20" : ""
               }`}
               style={{ opacity: 0 }}
             >
-              <div
-                className={`relative overflow-hidden bg-text/5 ${
-                  i % 3 === 0 ? "h-[500px] md:h-[700px]" : "h-[350px] md:h-[450px]"
-                }`}
-              >
+              <div className="relative overflow-hidden aspect-[4/5]">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-text/0 group-hover:bg-text/10 transition-colors duration-500" />
               </div>
-              <div className="mt-4 flex items-start justify-between">
+              <div className="mt-5 flex items-baseline justify-between">
                 <div>
-                  <h3 className="text-lg md:text-xl font-medium">
+                  <h3 className="text-[17px] font-medium tracking-[-0.01em]">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-text-muted mt-1">
+                  <p className="text-[13px] text-text-muted mt-1">
                     {project.category}
                   </p>
                 </div>
-                <span className="text-sm text-text-muted">{project.year}</span>
+                <span className="text-[13px] text-text-muted">{project.year}</span>
               </div>
             </Link>
           ))}

@@ -9,7 +9,6 @@ interface SplitTextProps {
   tag?: "h1" | "h2" | "h3" | "p" | "span" | "div";
   delay?: number;
   stagger?: number;
-  trigger?: boolean;
 }
 
 export default function SplitText({
@@ -17,53 +16,47 @@ export default function SplitText({
   className = "",
   tag: Tag = "div",
   delay = 0,
-  stagger = 0.08,
-  trigger = true,
+  stagger = 0.04,
 }: SplitTextProps) {
   const containerRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || hasAnimated.current) return;
+    hasAnimated.current = true;
 
     const el = containerRef.current;
     const text = el.textContent || "";
 
-    // Split into words, wrap each word in overflow-hidden span
-    const words = text.split(" ");
+    // Split into words, keep them inline with overflow hidden wrappers
+    const words = text.split(/\s+/).filter(Boolean);
     el.innerHTML = words
       .map(
         (word) =>
-          `<span class="line-wrapper inline-block"><span class="line-inner inline-block">${word}</span></span>`
+          `<span style="overflow:hidden;display:inline-block;vertical-align:top"><span class="split-word" style="display:inline-block;transform:translateY(100%);opacity:0">${word}</span></span>`
       )
-      .join(
-        '<span class="line-wrapper inline-block"><span class="line-inner inline-block">&nbsp;</span></span>'
-      );
+      .join(" ");
 
-    const innerSpans = el.querySelectorAll(".line-inner");
+    const wordSpans = el.querySelectorAll(".split-word");
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: trigger
-          ? {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            }
-          : undefined,
-        delay: trigger ? 0 : delay,
-      });
-
-      tl.to(innerSpans, {
+      gsap.to(wordSpans, {
         y: 0,
-        duration: 0.8,
+        opacity: 1,
+        duration: 0.7,
         stagger,
         ease: "power3.out",
         delay,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
       });
     });
 
     return () => ctx.revert();
-  }, [children, delay, stagger, trigger]);
+  }, [children, delay, stagger]);
 
   return (
     <Tag ref={containerRef as any} className={className}>

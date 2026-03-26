@@ -6,73 +6,57 @@ import ScrollIndicator from "@/components/ui/ScrollIndicator";
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const imageLeftRef = useRef<HTMLDivElement>(null);
-  const imageRightRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const imgLeftRef = useRef<HTMLDivElement>(null);
+  const imgRightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !titleRef.current) return;
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Title line reveal
-      const lines = titleRef.current!.querySelectorAll(".hero-line");
+      // Title lines
+      const lines = document.querySelectorAll(".hero-line-inner");
       gsap.fromTo(
         lines,
-        { y: "100%", opacity: 0 },
+        { y: "110%" },
         {
           y: "0%",
-          opacity: 1,
           duration: 1.2,
-          stagger: 0.15,
+          stagger: 0.12,
           ease: "power4.out",
-          delay: 0.3,
+          delay: 0.2,
         }
       );
 
-      // Image reveals
-      if (imageLeftRef.current) {
+      // Subtitle
+      if (subtitleRef.current) {
         gsap.fromTo(
-          imageLeftRef.current,
-          { clipPath: "inset(100% 0% 0% 0%)" },
-          {
-            clipPath: "inset(0% 0% 0% 0%)",
-            duration: 1.4,
-            ease: "power4.inOut",
-            delay: 0.6,
-          }
+          subtitleRef.current,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.8 }
         );
       }
 
-      if (imageRightRef.current) {
+      // Images — clip reveal
+      [imgLeftRef, imgRightRef].forEach((ref, i) => {
+        if (!ref.current) return;
         gsap.fromTo(
-          imageRightRef.current,
-          { clipPath: "inset(0% 0% 100% 0%)" },
+          ref.current,
+          { clipPath: "inset(100% 0 0 0)" },
           {
-            clipPath: "inset(0% 0% 0% 0%)",
+            clipPath: "inset(0% 0 0 0)",
             duration: 1.4,
             ease: "power4.inOut",
-            delay: 0.8,
+            delay: 0.4 + i * 0.2,
           }
         );
-      }
-
-      // Parallax on scroll
-      gsap.to(titleRef.current, {
-        yPercent: -20,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
       });
 
-      // Overlay fade
-      if (overlayRef.current) {
-        gsap.to(overlayRef.current, {
-          opacity: 0.6,
+      // Parallax on scroll
+      if (titleRef.current) {
+        gsap.to(titleRef.current, {
+          yPercent: -15,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -90,80 +74,84 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-20"
     >
-      {/* Watercolor accent */}
-      <div className="absolute top-[20%] right-0 w-[60%] h-[300px] opacity-20 pointer-events-none">
+      {/* Background watercolor accent */}
+      <div className="absolute top-1/4 right-0 w-1/2 h-64 pointer-events-none opacity-15">
         <svg viewBox="0 0 800 200" className="w-full h-full">
           <path
             d="M0,100 Q200,20 400,80 T800,60"
-            stroke="#8fb8b0"
+            stroke="var(--color-accent)"
             strokeWidth="80"
             fill="none"
-            opacity="0.4"
+            opacity="0.5"
             strokeLinecap="round"
           />
         </svg>
       </div>
 
-      {/* Floating images */}
-      <div
-        ref={imageLeftRef}
-        className="absolute left-[5%] top-[15%] w-[220px] h-[300px] md:w-[260px] md:h-[360px] hidden md:block"
-        style={{ clipPath: "inset(100% 0% 0% 0%)" }}
-      >
-        <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=520&h=720&fit=crop"
-          alt="Architecture"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      <div className="w-full max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
+        {/* Main grid: images flanking title */}
+        <div className="grid grid-cols-12 gap-6 items-center">
+          {/* Left image */}
+          <div className="hidden lg:block col-span-2">
+            <div
+              ref={imgLeftRef}
+              className="aspect-[3/4] overflow-hidden"
+              style={{ clipPath: "inset(100% 0 0 0)" }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=540&fit=crop"
+                alt="Modern architecture exterior"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
 
-      <div
-        ref={imageRightRef}
-        className="absolute right-[5%] top-[10%] w-[240px] h-[320px] md:w-[280px] md:h-[380px] hidden md:block"
-        style={{ clipPath: "inset(0% 0% 100% 0%)" }}
-      >
-        <img
-          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=560&h=760&fit=crop"
-          alt="Architecture"
-          className="w-full h-full object-cover"
-        />
-      </div>
+          {/* Center: Title */}
+          <div
+            ref={titleRef}
+            className="col-span-12 lg:col-span-8 text-center"
+          >
+            <h1>
+              <span className="block overflow-hidden">
+                <span className="hero-line-inner block text-[clamp(2.8rem,6.5vw,7rem)] font-bold uppercase leading-[1] tracking-[-0.03em]">
+                  Art Direction
+                </span>
+              </span>
+              <span className="block overflow-hidden mt-1">
+                <span className="hero-line-inner block text-[clamp(2.8rem,6.5vw,7rem)] font-serif font-light italic leading-[1] tracking-[-0.01em]">
+                  &amp; Visual Strategy
+                </span>
+              </span>
+            </h1>
 
-      {/* Title */}
-      <div className="relative z-10 px-6 md:px-12 max-w-6xl mx-auto w-full">
-        <h1
-          ref={titleRef}
-          className="text-center"
-        >
-          <span className="hero-line block text-[clamp(2.5rem,7vw,6.5rem)] font-bold uppercase leading-[1.05] tracking-tight">
-            ART DIRECTION
-          </span>
-          <span className="hero-line block text-[clamp(2.5rem,7vw,6.5rem)] font-serif font-light italic leading-[1.05] tracking-tight">
-            &amp; Visual Strategy
-          </span>
-        </h1>
+            <p
+              ref={subtitleRef}
+              className="mt-10 text-text-muted text-[13px] uppercase tracking-[0.25em] leading-relaxed max-w-lg mx-auto opacity-0"
+            >
+              We create visual narratives that reveal architecture
+              <br className="hidden sm:block" />
+              with clarity, emotion and strategy.
+            </p>
+          </div>
 
-        <div className="overflow-hidden mt-8">
-          <p className="hero-line text-center text-text-muted text-sm md:text-base max-w-md mx-auto leading-relaxed uppercase tracking-[0.2em]">
-            I create visual narratives that reveal
-            <br />
-            architecture with clarity, emotion and strategy.
-          </p>
+          {/* Right image */}
+          <div className="hidden lg:block col-span-2">
+            <div
+              ref={imgRightRef}
+              className="aspect-[3/4] overflow-hidden mt-12"
+              style={{ clipPath: "inset(100% 0 0 0)" }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=540&fit=crop"
+                alt="Modern interior design"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Bottom image */}
-      <div className="absolute bottom-0 right-[10%] w-[300px] h-[200px] md:w-[400px] md:h-[280px] hidden lg:block">
-        <img
-          src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=560&fit=crop"
-          alt="Architecture"
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      <div ref={overlayRef} className="absolute inset-0 bg-bg opacity-0 pointer-events-none" />
 
       <ScrollIndicator />
     </section>

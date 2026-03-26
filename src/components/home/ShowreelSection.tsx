@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 
 export default function ShowreelSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -14,7 +14,7 @@ export default function ShowreelSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         imageRef.current,
-        { scale: 1.1 },
+        { scale: 1.08 },
         {
           scale: 1,
           ease: "none",
@@ -32,21 +32,19 @@ export default function ShowreelSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-40 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="relative overflow-hidden cursor-pointer group h-[50vh] md:h-[70vh]">
+    <section ref={sectionRef} className="py-16 md:py-24 px-8 md:px-12 lg:px-16">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="relative overflow-hidden cursor-pointer group aspect-[16/9]">
           <div ref={imageRef} className="absolute inset-0">
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&h=900&fit=crop"
-              alt="Showreel"
+              alt="Architecture showreel"
               className="w-full h-full object-cover"
             />
           </div>
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-text/30 group-hover:bg-text/40 transition-colors duration-500" />
+          <div className="absolute inset-0 bg-text/25 group-hover:bg-text/35 transition-colors duration-500" />
 
-          {/* Play button */}
           {!isPlaying && (
             <div
               onClick={() => setIsPlaying(true)}
@@ -57,13 +55,12 @@ export default function ShowreelSection() {
                   <polygon points="8,5 19,12 8,19" />
                 </svg>
               </div>
-              <span className="absolute bottom-8 left-8 text-text-light text-xs uppercase tracking-[0.3em]">
+              <span className="absolute bottom-8 left-8 text-text-light text-[11px] uppercase tracking-[0.3em]">
                 Watch Showreel
               </span>
             </div>
           )}
 
-          {/* Video (shown when playing) */}
           {isPlaying && (
             <div className="absolute inset-0 bg-text">
               <video
@@ -74,7 +71,7 @@ export default function ShowreelSection() {
               />
               <button
                 onClick={() => setIsPlaying(false)}
-                className="absolute top-4 right-4 text-text-light text-2xl z-10"
+                className="absolute top-4 right-4 text-text-light text-2xl z-10 w-10 h-10 flex items-center justify-center"
               >
                 &times;
               </button>

@@ -34,7 +34,7 @@ export default function AboutPage() {
   return (
     <div className="pt-32 md:pt-40">
       {/* Hero Statement */}
-      <section className="px-6 md:px-12 pb-24 md:pb-40">
+      <section className="px-8 md:px-12 lg:px-16 pb-24 md:pb-40">
         <div ref={heroRef} className="max-w-5xl">
           <div className="overflow-hidden">
             <h1 className="about-line text-[clamp(2rem,5vw,4.5rem)] font-bold uppercase leading-[1.1] tracking-tight">
@@ -58,8 +58,8 @@ export default function AboutPage() {
       </section>
 
       {/* Bio Section */}
-      <section className="px-6 md:px-12 pb-24 md:pb-40">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <section className="px-8 md:px-12 lg:px-16 pb-24 md:pb-40">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           {/* Portrait */}
           <RevealOnScroll>
             <div className="relative h-[500px] md:h-[600px] overflow-hidden">
@@ -112,7 +112,7 @@ export default function AboutPage() {
           speed={0.15}
         />
         <div className="absolute inset-0 bg-text/60" />
-        <div className="relative z-10 px-6 md:px-12 max-w-4xl mx-auto text-center">
+        <div className="relative z-10 px-8 md:px-12 lg:px-16 max-w-4xl mx-auto text-center">
           <RevealOnScroll>
             <span className="text-xs uppercase tracking-[0.3em] text-text-light/50 block mb-8">
               Philosophy
@@ -128,8 +128,8 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="px-6 md:px-12 py-24 md:py-40">
-        <div className="max-w-7xl mx-auto">
+      <section className="px-8 md:px-12 lg:px-16 py-24 md:py-40">
+        <div className="max-w-[1400px] mx-auto">
           <RevealOnScroll>
             <span className="text-xs uppercase tracking-[0.3em] text-text-muted block mb-12">
               Core Values

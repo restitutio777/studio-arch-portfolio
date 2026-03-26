@@ -20,9 +20,10 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 px-8 md:px-12 py-6 md:py-8 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? "bg-bg/80 backdrop-blur-md !py-4" : ""
+        className={`fixed top-0 left-0 w-full z-50 px-8 md:px-12 lg:px-16 flex items-center justify-between transition-all duration-500 ${
+          scrolled ? "bg-bg/80 backdrop-blur-md" : ""
         }`}
+        style={{ paddingTop: scrolled ? 16 : 28, paddingBottom: scrolled ? 16 : 28 }}
       >
         {/* Logo */}
         <Link href="/" className="relative z-[60]">

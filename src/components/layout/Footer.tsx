@@ -5,9 +5,9 @@ import RevealOnScroll from "@/components/ui/RevealOnScroll";
 
 export default function Footer() {
   return (
-    <footer className="bg-bg-dark text-text-light px-6 md:px-12 py-16 md:py-24">
+    <footer className="bg-bg-dark text-text-light px-8 md:px-12 lg:px-16 py-20 md:py-28">
       <RevealOnScroll>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           {/* Top section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
             {/* Brand */}

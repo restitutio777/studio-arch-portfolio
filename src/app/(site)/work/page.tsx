@@ -2,8 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
-import SplitText from "@/components/ui/SplitText";
+import { gsap } from "@/lib/gsap";
 
 const categories = ["All", "Residential", "Commercial", "Cultural", "Hospitality"];
 
@@ -91,16 +90,13 @@ export default function WorkPage() {
   }, [activeCategory]);
 
   return (
-    <section className="pt-32 pb-24 md:pt-40 md:pb-40 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
+    <section className="pt-36 pb-28 md:pt-44 md:pb-44 px-8 md:px-12 lg:px-16">
+      <div className="max-w-[1400px] mx-auto">
         {/* Header */}
-        <div className="mb-16">
-          <SplitText
-            tag="h1"
-            className="text-[clamp(3rem,8vw,7rem)] font-bold uppercase leading-[0.95] tracking-tight"
-          >
+        <div className="mb-16 md:mb-20">
+          <h1 className="text-[clamp(3rem,7vw,6rem)] font-bold uppercase leading-[0.95] tracking-[-0.03em]">
             Selected Work
-          </SplitText>
+          </h1>
         </div>
 
         {/* Filter */}

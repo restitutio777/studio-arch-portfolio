@@ -21,8 +21,8 @@ export default function ContactPage() {
 
   return (
     <div className="pt-32 md:pt-40 pb-24 md:pb-40">
-      <section className="px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
+      <section className="px-8 md:px-12 lg:px-16">
+        <div className="max-w-[1400px] mx-auto">
           {/* Header */}
           <div className="mb-20">
             <SplitText
