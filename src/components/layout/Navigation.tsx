@@ -39,15 +39,12 @@ export default function Navigation() {
           <MagneticButton>
             <Link
               href="/contact"
-              className="hidden md:flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-medium text-text-light transition-colors"
-              style={{ backgroundColor: "#536b7a" }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#46596a")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#536b7a")}
+              className="hidden md:flex items-center px-7 py-3 rounded-full text-[12px] font-medium uppercase tracking-[0.08em] text-text-light transition-all duration-300"
+              style={{ backgroundColor: "#8a7e76" }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#7a6e66")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#8a7e76")}
             >
-              GET IN TOUCH
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="ml-1">
-                <path d="M1 13L13 1M13 1H3M13 1V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              Get in Touch
             </Link>
           </MagneticButton>
 

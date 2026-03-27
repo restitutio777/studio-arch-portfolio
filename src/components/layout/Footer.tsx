@@ -23,7 +23,7 @@ export default function Footer() {
 
             {/* Navigation */}
             <div>
-              <h4 className="text-xs uppercase tracking-[0.3em] text-text-light/40 mb-6">
+              <h4 className="text-[11px] uppercase tracking-[0.25em] text-text-light/35 mb-6">
                 Navigation
               </h4>
               <ul className="space-y-3">
@@ -42,7 +42,7 @@ export default function Footer() {
 
             {/* Contact */}
             <div>
-              <h4 className="text-xs uppercase tracking-[0.3em] text-text-light/40 mb-6">
+              <h4 className="text-[11px] uppercase tracking-[0.25em] text-text-light/35 mb-6">
                 Get in Touch
               </h4>
               <a

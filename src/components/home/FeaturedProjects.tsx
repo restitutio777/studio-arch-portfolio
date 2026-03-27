@@ -78,33 +78,19 @@ export default function FeaturedProjects() {
         <RevealOnScroll>
           <div className="flex items-end justify-between mb-16 md:mb-20">
             <div>
-              <span className="text-[11px] uppercase tracking-[0.3em] text-text-muted block mb-5">
+              <span className="text-[11px] uppercase tracking-[0.3em] text-text-muted block mb-4">
                 Selected Projects
               </span>
-              <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-bold uppercase leading-[1.1] tracking-[-0.02em]">
+              <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold uppercase leading-[1.1] tracking-[-0.02em]">
                 Featured Work
               </h2>
             </div>
             <Link
               href="/work"
-              className="hidden md:flex items-center gap-3 text-[13px] text-text-muted hover:text-text transition-colors group"
+              className="hidden md:flex items-center gap-4 text-[12px] uppercase tracking-[0.1em] text-text-muted hover:text-text transition-colors group"
             >
               View all projects
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                className="group-hover:translate-x-1 transition-transform"
-              >
-                <path
-                  d="M1 7H13M13 7L7 1M13 7L7 13"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <span className="w-8 h-[1px] bg-current group-hover:w-12 transition-all duration-300" />
             </Link>
           </div>
         </RevealOnScroll>
@@ -127,16 +113,16 @@ export default function FeaturedProjects() {
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
-              <div className="mt-5 flex items-baseline justify-between">
+              <div className="mt-4 flex items-baseline justify-between">
                 <div>
-                  <h3 className="text-[17px] font-medium tracking-[-0.01em]">
+                  <h3 className="text-[15px] font-medium tracking-[-0.01em]">
                     {project.title}
                   </h3>
-                  <p className="text-[13px] text-text-muted mt-1">
+                  <p className="text-[12px] text-text-muted mt-1 uppercase tracking-[0.05em]">
                     {project.category}
                   </p>
                 </div>
-                <span className="text-[13px] text-text-muted">{project.year}</span>
+                <span className="text-[12px] text-text-muted tabular-nums">{project.year}</span>
               </div>
             </Link>
           ))}

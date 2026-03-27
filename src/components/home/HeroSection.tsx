@@ -77,14 +77,13 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-20"
     >
       {/* Background watercolor accent */}
-      <div className="absolute top-1/4 right-0 w-1/2 h-64 pointer-events-none opacity-15">
+      <div className="absolute top-1/3 right-0 w-1/3 h-48 pointer-events-none opacity-[0.08]">
         <svg viewBox="0 0 800 200" className="w-full h-full">
           <path
             d="M0,100 Q200,20 400,80 T800,60"
-            stroke="var(--color-golden)"
-            strokeWidth="80"
+            stroke="#d4cc9a"
+            strokeWidth="60"
             fill="none"
-            opacity="0.5"
             strokeLinecap="round"
           />
         </svg>
@@ -128,11 +127,11 @@ export default function HeroSection() {
 
             <p
               ref={subtitleRef}
-              className="mt-10 text-text-muted text-[13px] uppercase tracking-[0.25em] leading-relaxed max-w-lg mx-auto opacity-0"
+              className="mt-12 text-text-muted text-[12px] uppercase tracking-[0.3em] leading-[2] max-w-md mx-auto opacity-0"
             >
-              We create visual narratives that reveal architecture
+              Visual narratives that reveal architecture
               <br className="hidden sm:block" />
-              with clarity, emotion and strategy.
+              with clarity, emotion and strategy
             </p>
           </div>
 

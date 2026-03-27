@@ -22,19 +22,19 @@ export default function AboutTeaser() {
         {/* Text */}
         <div className="md:col-span-6 md:col-start-7">
           <RevealOnScroll>
-            <span className="text-[11px] uppercase tracking-[0.3em] text-text-muted block mb-8">
+            <span className="text-[11px] uppercase tracking-[0.3em] text-text-muted block mb-6">
               About the Studio
             </span>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.1}>
-            <h2 className="text-[clamp(1.6rem,3vw,2.6rem)] font-bold uppercase leading-[1.15] tracking-[-0.01em] mb-8">
+            <h2 className="text-[clamp(1.5rem,2.8vw,2.4rem)] font-bold uppercase leading-[1.2] tracking-[-0.01em] mb-6">
               We believe architecture deserves to be seen through intentional vision.
             </h2>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.2}>
-            <p className="text-text-muted text-[15px] leading-[1.8] mb-10 max-w-md">
+            <p className="text-text-muted text-[14px] leading-[1.85] mb-10 max-w-md">
               With over a decade of international experience, we&apos;ve collaborated
               on world-class residential and conceptual projects, helping
               architecture studios express their vision with clarity and depth.
